@@ -6,7 +6,7 @@ pipeline {
             checkout scm
         }
       }
-      stage('Preparing the Environment') {
+      stage ('Preparing the Environment') {
          steps {
             script {
                def tfHome = tool 'Terraform'
