@@ -15,6 +15,7 @@ pipeline {
             }
             sh 'terraform -version'
          }
+      }   
       stage ('Provisioning Infrastructure'){
          steps {
            dir ('Azure') {
