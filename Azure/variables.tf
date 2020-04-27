@@ -2,6 +2,7 @@
 
 variable "location" {
   description = "The data center location where all resources will be put into."
+  default ="East US"
 }
 
 variable "resource_group_name" {
