@@ -2,7 +2,6 @@
 
 variable "location" {
   description = "The data center location where all resources will be put into."
-  default ="East US"
 }
 
 variable "resource_group_name" {
@@ -71,7 +70,6 @@ variable "virtual_machine_computer_name" {
 
 variable "admin_username" {
   description = "The username of the administrator of the Jenkins virtual machine."
-  default     = "dazedavid"
 }
 
 variable "ssh_public_key_data" {
