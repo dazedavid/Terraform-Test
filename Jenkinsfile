@@ -21,8 +21,8 @@ pipeline {
            dir ('Azure') {
               withCredentials([azureServicePrincipal('azurelogin')]) {
                       sh 'terraform init'
-                      sh 'terraform plan -out "plan.out"'
-                      sh 'terraform apply "plan.out"'
+                      sh 'terraform plan -out "check.out"'
+                      sh 'terraform apply "check.out"'
                   }   
                }
             }      
