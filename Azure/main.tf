@@ -64,7 +64,7 @@ resource "azurerm_network_security_group" "allows" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name                      = "var.network_interface_name"
+  name                      = var.network_interface_name
   location                  = azurerm_resource_group.rg.location
   resource_group_name       = azurerm_resource_group.rg.name
   
@@ -81,11 +81,11 @@ resource "azurerm_network_interface" "nic" {
 ### Virtual Machine
 
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "var.virtual_machine_name"
-  location              = "azurerm_resource_group.rg.location"
-  resource_group_name   = "azurerm_resource_group.rg.name"
-  network_interface_ids = ["azurerm_network_interface.nic.id"]
-  vm_size               = "var.virtual_machine_size"
+  name                  = var.virtual_machine_name
+  location              = azurerm_resource_group.rg.location
+  resource_group_name   = azurerm_resource_group.rg.name
+  network_interface_ids = [azurerm_network_interface.nic.id]
+  vm_size               = var.virtual_machine_size
 
   storage_image_reference {
     publisher = "Canonical"
