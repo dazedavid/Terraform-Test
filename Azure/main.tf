@@ -1,5 +1,9 @@
-### General
 
+### General
+provider "azurerm" {
+    version = "~>2.3.0"
+  features {}
+  }
 resource "azurerm_resource_group" "rg" {
   name     = "${var.resource_group_name}"
   location = "${var.location}"
@@ -26,9 +30,8 @@ resource "azurerm_public_ip" "pip" {
   name                         = "${var.public_ip_name}"
   location                     = "${azurerm_resource_group.rg.location}"
   resource_group_name          = "${azurerm_resource_group.rg.name}"
-  public_ip_address_allocation = "Static"
-  domain_name_label            = "${var.public_domain_name}"
-}
+  allocation_method = "Dynamic"
+  }
 
 resource "azurerm_network_security_group" "allows" {
   name = "${var.network_security_group_name}"
@@ -63,7 +66,7 @@ resource "azurerm_network_interface" "nic" {
   name                      = "${var.network_interface_name}"
   location                  = "${azurerm_resource_group.rg.location}"
   resource_group_name       = "${azurerm_resource_group.rg.name}"
-  network_security_group_id = "${azurerm_network_security_group.allows.id}"
+  
 
   ip_configuration {
     name                          = "${var.network_interface_name}-configuration"
