@@ -97,7 +97,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_os_disk {
     name              = "var.virtual_machine_osdisk_name"
     create_option     = "FromImage"
-    managed_disk_type = "var.virtual_machine_osdisk_type"
+    managed_disk_type = var.virtual_machine_osdisk_type
   }
 
   os_profile {
