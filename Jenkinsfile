@@ -14,12 +14,9 @@ pipeline {
                env.PATH = "${tfHome}:${env.PATH}"
             }
             sh 'terraform -version'
-            sh 'pwd'
          }
       }   
       stage ('Provisioning Infrastructure'){
-         steps {
-           stage ('Provisioning Infrastructure'){
          steps {
            dir ('Azure') {
               withCredentials([azureServicePrincipal('azurelogin')]) {
@@ -31,7 +28,4 @@ pipeline {
             }      
          }
       } 
-     }
- 
    }
-}
