@@ -19,8 +19,10 @@ pipeline {
       }   
       stage ('Provisioning Infrastructure'){
          steps {
+           stage ('Provisioning Infrastructure'){
+         steps {
            dir ('Azure') {
-                     sh  'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+              withCredentials([azureServicePrincipal('azurelogin')]) {
                       sh 'terraform init'
                       sh 'terraform plan -out "check.out"'
                       sh 'terraform apply "check.out"'
@@ -29,4 +31,5 @@ pipeline {
             }      
          }
       } 
+      }
  
