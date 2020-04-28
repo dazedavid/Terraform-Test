@@ -70,6 +70,7 @@ variable "virtual_machine_computer_name" {
 
 variable "admin_username" {
   description = "The username of the administrator of the Jenkins virtual machine."
+  default = "azureuser"
 }
 
 variable "ssh_public_key_data" {
